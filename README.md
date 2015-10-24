@@ -10,8 +10,8 @@ Here's the idea:
 - [ ] Open web metronome.
 - [ ] Set BPM and start metronome.
 - [ ] Set laptop volume to 15.
-- [ ] Open TypeRacer.  
-- [ ] Start a solo practice in TypeRacer.
+- [X] Open TypeRacer.  
+- [X] Start a solo practice in TypeRacer.
 - [ ] Open Keybr in another browser tab.
-- [ ] Provide TypeRacer hotkeys so that no mouse use in necessary.
+- [X] Provide TypeRacer hotkeys so that no mouse use in necessary.
 - [ ] Provide hotkey to close on success: Bump BPM, close everything, and exit.
