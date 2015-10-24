@@ -1,5 +1,5 @@
 # typing-practice-launcher
-AHK script to launch my daily typing practice.
+AHK script to launch my daily typing practice.  What I do is go for perfect execution in TypeRacer at some tempo for five minutes and then raise that BPM by 1 every day if I don't make any mistakes.  Then, I try to go as fast as I can in Keybr for a bit.
 
 Here's the idea:
 - [X] Be able to start practice by `<C-A t>` hotkey.
