@@ -5,6 +5,12 @@
 ; Persistent scripts keep running forever until explicitly closed.
 #Persistent
 
+; Just exit before noon.  I'm never going to do typing practice later in the day.
+hour := A_Hour + 0 ; Convert to int.  A_Hour seems to be zero-padded string.
+if (hour < 12) {
+	ExitApp
+}
+
 
 ;=============================================================================== 
 ; Functions
