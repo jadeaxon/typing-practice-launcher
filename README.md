@@ -2,7 +2,7 @@
 AHK script to launch my daily typing practice.
 
 Here's the idea:
-- [ ] Be able to start practice by `<C-A t>` hotkey.
+- [X] Be able to start practice by `<C-A t>` hotkey.
 - [ ] Run at Windows startup, but only before noon.  
 - [ ] Stay persistent to provide hotkeys for TypeRacer.  Don't want to use mouse at all.
 - [ ] Open Typing.txt.  
