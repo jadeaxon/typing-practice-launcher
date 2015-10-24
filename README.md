@@ -10,4 +10,3 @@ Here's the idea:
 - [ ] Open TypeRacer.  Start a practice.
 - [ ] Open Keybr in another browser tab.
 - [ ] Hotkey to close on success: Bump BPM, close everything, and exit.
-- 
