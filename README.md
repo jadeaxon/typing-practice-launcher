@@ -8,7 +8,7 @@ Here's the idea:
 - [X] Open Typing.txt.  
 - [X] Extract current BPM from Typing.txt.
 - [X] Open web metronome.
-- [ ] Set BPM.
+- [X] Set BPM.
 - [X] Start metronome.
 - [X] Set laptop volume to 15.  Or thereabouts.
 - [X] Open TypeRacer.  
