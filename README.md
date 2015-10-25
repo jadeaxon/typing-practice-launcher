@@ -10,7 +10,7 @@ Here's the idea:
 - [X] Open web metronome.
 - [ ] Set BPM.
 - [X] Start metronome.
-- [ ] Set laptop volume to 15.
+- [X] Set laptop volume to 15.  Or thereabouts.
 - [X] Open TypeRacer.  
 - [X] Start a solo practice in TypeRacer.
 - [ ] Open Keybr in another browser tab.
