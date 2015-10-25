@@ -6,9 +6,10 @@ Here's the idea:
 - [X] Run at Windows startup, but only before noon.  
 - [X] Stay persistent to provide hotkeys for TypeRacer.  Don't want to use mouse at all.
 - [X] Open Typing.txt.  
-- [ ] Extract current BPM from Typing.txt.
-- [ ] Open web metronome.
-- [ ] Set BPM and start metronome.
+- [X] Extract current BPM from Typing.txt.
+- [X] Open web metronome.
+- [ ] Set BPM.
+- [X] Start metronome.
 - [ ] Set laptop volume to 15.
 - [X] Open TypeRacer.  
 - [X] Start a solo practice in TypeRacer.
