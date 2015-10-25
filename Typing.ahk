@@ -16,10 +16,74 @@ if (hour >= 12) {
 ; Functions
 ;=============================================================================== 
 
+; Reads the latest BPM from the first line of Typing.txt.
+; PRE: Typing.txt is open and its window is active.
+; PRE: First line has the form 'BPM (next): 146'.
+_readBPM() {
+	; Select first line and copy to clipboard.
+	Send {Escape}
+	Send gg
+	Send +V 
+	Send ^C
+	ClipWait
+	text := clipboard
+	StringSplit, words, text, %A_Space%
+	words := Trim(words)
+	bpm = %words3%
+	StringReplace, bpm, bpm, `n,, A
+	StringReplace, bpm, bpm,`r,, A
+	bpm := bpm + 0
+	
+	; if (bpm >= 146) {
+		; MsgBox,,, %bpm% is a number
+	; }
+
+	Return bpm
+
+} ; _readBPM()
+
+
+; Sets the BPM in the metronome webpage.
+; PRE: _readBPM() has been called successfully.
+_setBPM() {
+	Run http://a.bestmetronome.com/
+	WinWaitActive METRONOME
+	; In Dvorak:
+	; u => +10 bpm
+	; e => +1 bpm
+	; Start bpm is 90.
+	; <Space> => start/stop metronome.
+
+	; TO DO: Adjust BPM.
+
+	; What we should really do is pixel test the screen rather than arbitrary sleep.
+	Sleep 7000
+	Send {Space}
+	Sleep 1000
+
+} ; _setBPM()
+
+
+; Opens everything needed to start typing practice.
 _openTypingPractice() {
 	Run "C:\Users\jadeaxon\Dropbox\Organization\Notes\Computing\Typing.txt"
+	WinActivate Typing ahk_class Vim	
+	WinWaitActive Typing ahk_class Vim
+	bpm := _readBPM()
+	_setBPM()
+
 	Run http://play.typeracer.com/
-	WinWaitActive TypeRacer
+	WinActivate ahk_class MozillaWindowClass
+	WinWaitActive TypeRacer ahk_class MozillaWindowClass
+	
+	; Wait for TypeRacer site to fully load.
+	; Again a pixel scrape would be better than arbitrary sleep.
+	Sleep 5000
+
+	; For some reason, site won't respond to keyboard shortcuts until you click on it.
+	; So, we click on a blank part of the web page.
+	MouseMove 740, 260
+	Click
 	Send ^!o
 	; <C-A l> in TypeRacer opens the login prompt.
 	; <C-A o> in TypeRacer opens a new practice.
@@ -28,6 +92,7 @@ _openTypingPractice() {
 	; This is no good in Dvorak.  I want <A n> to do this.
 
 } ; _openTypingPractice()
+
 
 
 ;=============================================================================== 
