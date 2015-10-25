@@ -45,7 +45,7 @@ _readBPM() {
 
 ; Sets the BPM in the metronome webpage.
 ; PRE: _readBPM() has been called successfully.
-_setBPM() {
+_setBPM(bpm) {
 	Run http://a.bestmetronome.com/
 	WinWaitActive METRONOME
 	; In Dvorak:
@@ -53,9 +53,12 @@ _setBPM() {
 	; e => +1 bpm
 	; Start bpm is 90.
 	; <Space> => start/stop metronome.
-
-	; TO DO: Adjust BPM.
-
+	delta := bpm - 90
+	tens := delta // 10
+	ones := mod(delta, 10)
+	Send {u %tens%}
+	Send {e %ones%}
+	
 	; What we should really do is pixel test the screen rather than arbitrary sleep.
 	Sleep 7000
 	Send {Space}
@@ -77,7 +80,8 @@ _openTypingPractice() {
 	Send {Volume_Up 3}
 
 	bpm := _readBPM()
-	_setBPM()
+	_setBPM(bpm)
+	ExitApp
 
 	Run http://play.typeracer.com/
 	WinActivate ahk_class MozillaWindowClass
