@@ -69,6 +69,13 @@ _openTypingPractice() {
 	Run "C:\Users\jadeaxon\Dropbox\Organization\Notes\Computing\Typing.txt"
 	WinActivate Typing ahk_class Vim	
 	WinWaitActive Typing ahk_class Vim
+	
+	; Set master volume to 15%.
+	; SoundSet, 15, Headphones, volume
+	; This puts us at 13% on the XPS 15.  Even if volume is at 100%.
+	Send {Volume_Down 25}
+	Send {Volume_Up 3}
+
 	bpm := _readBPM()
 	_setBPM()
 
