@@ -18,4 +18,4 @@ Here's the idea:
 - [X] Open Keybr in another browser tab.
 - [X] Provide TypeRacer hotkeys so that no mouse use in necessary.
 - [X] Provide hotkey to close on success.
-- [ ] Bump BPM on exit.
+- [X] Bump BPM on exit.

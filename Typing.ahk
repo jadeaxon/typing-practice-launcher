@@ -1,3 +1,11 @@
+; This script automates my daily typing practice.  Obviously does not automate the 
+; actual typing itself as that would defeat the purpose. :)
+
+; My typing practice is essentially 5 minutes of metronome practice on TypeRacer
+; followed by trying to go as fast as I can on Keybr.  I bump the metronome 1 BPM
+; each day if I don't totally screw up.
+
+
 ;=============================================================================== 
 ; Main
 ;=============================================================================== 
@@ -10,6 +18,8 @@ hour := A_Hour + 0 ; Convert to int.  A_Hour seems to be zero-padded string.
 if (hour >= 12) {
 	ExitApp
 }
+
+SetKeyDelay, 50, 50	
 
 
 ;=============================================================================== 
@@ -34,10 +44,6 @@ _readBPM() {
 	StringReplace, bpm, bpm,`r,, A
 	bpm := bpm + 0
 	
-	; if (bpm >= 146) {
-		; MsgBox,,, %bpm% is a number
-	; }
-
 	Return bpm
 
 } ; _readBPM()
@@ -59,7 +65,6 @@ _setBPM(bpm) {
 	delta := bpm - 90
 	tens := delta // 10
 	ones := mod(delta, 10)
-	SetKeyDelay, 50, 50	
 	Send {u %tens%}
 	Send {e %ones%}
 	
@@ -113,15 +118,21 @@ _openTypingPractice() {
 
 
 ; Stops typing practice.  Bumps BPM in Typing.txt.
+; PRE: You must be using <A-a> and <C-s> mapping from my .vimrc.
 _stopTypingPractice() {
 	; Close the Keybd tab in Firefox.
 	Send ^w
 
 	WinActivate Typing ahk_class Vim	
 	WinWaitActive Typing ahk_class Vim
+	Send {Escape}
+	Send gg
+	Send !a
+	Send ^s
+	Send !{F4}
 
 	ExitApp
-}
+} ; _stopTypingPractice()
 
 
 ;=============================================================================== 
