@@ -47,7 +47,10 @@ _readBPM() {
 ; PRE: _readBPM() has been called successfully.
 _setBPM(bpm) {
 	Run http://a.bestmetronome.com/
-	WinWaitActive METRONOME
+	WinActivate METRONOME ahk_class MozillaWindowClass
+	WinWaitActive METRONOME ahk_class MozillaWindowClass
+	Sleep 1000
+
 	; In Dvorak:
 	; u => +10 bpm
 	; e => +1 bpm
@@ -56,6 +59,7 @@ _setBPM(bpm) {
 	delta := bpm - 90
 	tens := delta // 10
 	ones := mod(delta, 10)
+	SetKeyDelay, 50, 50	
 	Send {u %tens%}
 	Send {e %ones%}
 	
@@ -69,10 +73,14 @@ _setBPM(bpm) {
 
 ; Opens everything needed to start typing practice.
 _openTypingPractice() {
+	Run http://www.keybr.com/login/1xB0vnQkZI
+	WinActivate Learn typing ahk_class MozillaWindowClass
+	WinWaitActive Learn typing ahk_class MozillaWindowClass
+
 	Run "C:\Users\jadeaxon\Dropbox\Organization\Notes\Computing\Typing.txt"
 	WinActivate Typing ahk_class Vim	
 	WinWaitActive Typing ahk_class Vim
-	
+
 	; Set master volume to 15%.
 	; SoundSet, 15, Headphones, volume
 	; This puts us at 13% on the XPS 15.  Even if volume is at 100%.
@@ -81,10 +89,9 @@ _openTypingPractice() {
 
 	bpm := _readBPM()
 	_setBPM(bpm)
-	ExitApp
 
 	Run http://play.typeracer.com/
-	WinActivate ahk_class MozillaWindowClass
+	WinActivate TypeRacer ahk_class MozillaWindowClass
 	WinWaitActive TypeRacer ahk_class MozillaWindowClass
 	
 	; Wait for TypeRacer site to fully load.
@@ -104,6 +111,17 @@ _openTypingPractice() {
 
 } ; _openTypingPractice()
 
+
+; Stops typing practice.  Bumps BPM in Typing.txt.
+_stopTypingPractice() {
+	; Close the Keybd tab in Firefox.
+	Send ^w
+
+	WinActivate Typing ahk_class Vim	
+	WinWaitActive Typing ahk_class Vim
+
+	ExitApp
+}
 
 
 ;=============================================================================== 
@@ -128,5 +146,12 @@ $!n::
 return
 #IfWinActive  
 
+
+#IfWinActive Learn typing ahk_class MozillaWindowClass
+; <A s> => Stop typing practice.
+$!s::
+    _stopTypingPractice()
+return
+#IfWinActive  
 
 
