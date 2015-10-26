@@ -1,6 +1,10 @@
 # typing-practice-launcher
 AHK script to launch my daily typing practice.  What I do is go for perfect execution in TypeRacer at some tempo for five minutes and then raise that BPM by 1 every day if I don't make any mistakes.  Then, I try to go as fast as I can in Keybr for a bit.
 
+Getting back into software dev in 2011 (after a long guitar playing break), I decided to take up
+Programmer Dvorak since I had carpal tunnel issues at one point in the past.  Switching layouts was tough going.
+Could only type 15 wpm at first.  Now I hit in the mid 80s, which is faster than I ever was on Qwerty.  No more RSI issues either.  Trying to get over 100, but it is not happening naturally for me. 
+
 Once the script is active, `<C-A t>` initiates typing practice.  The script opens the browser tabs in reverse order so I can just use `<C w>` to dismiss tabs.  In the last tab, `<A s>` is a hotkey to stop typing practice.  That is, everything can be easily done by keyboard.
 
 Here's the idea:
