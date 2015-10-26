@@ -13,6 +13,7 @@ Here's the idea:
 - [X] Set laptop volume to 15.  Or thereabouts.
 - [X] Open TypeRacer.  
 - [X] Start a solo practice in TypeRacer.
-- [ ] Open Keybr in another browser tab.
+- [X] Open Keybr in another browser tab.
 - [X] Provide TypeRacer hotkeys so that no mouse use in necessary.
-- [ ] Provide hotkey to close on success: Bump BPM, close everything, and exit.
+- [X] Provide hotkey to close on success.
+- [ ] Bump BPM on exit.
