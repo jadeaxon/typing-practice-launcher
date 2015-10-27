@@ -145,6 +145,7 @@ _stopTypingPractice() {
 
 ; <C-A t> => Open typing practice stuff.
 $^!t::
+	MsgBox,,, Smile!, 3
     _openTypingPractice()
 return
 
