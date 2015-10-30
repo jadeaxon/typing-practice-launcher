@@ -120,8 +120,11 @@ _openTypingPractice() {
 ; Stops typing practice.  Bumps BPM in Typing.txt.
 ; PRE: You must be using <A-a> and <C-s> mapping from my .vimrc.
 _stopTypingPractice() {
-	; Close the Keybd tab in Firefox.
-	Send ^w
+	; Open Slashdot.org in the Keybd tab in Firefox.
+	SetKeyDelay, 10, 10	
+	Send ^l
+	Send http://slashdot.org
+	Send {Enter}
 
 	WinActivate Typing ahk_class Vim	
 	WinWaitActive Typing ahk_class Vim
